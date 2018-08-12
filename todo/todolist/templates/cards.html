@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+             <h1><center>{{title}}</center></h1>
+             <hr>
+
+
+
+             <div class = "container">
+
+                 <a class="btn btn-success" href = "{% url "card_add" %}" >Add Card</a>
+
+                 <br>
+                 <br>
+                 <center>
+                 <table class = "table table-striped">
+
+                 <tr>
+                     <th>Title</th>
+                     <th>Content</th>
+                     <th>Edit</th>
+                     <th>Delete</th>
+                 </tr>
+
+                 {% for data in data_set %}
+                 <tr>
+
+                     <td>{{data.title}}</td>
+                     <td>{{data.content}}</td>
+                     <td><a href = "{% url "card_update"  data.id %}" >Edit</a></td>
+                     <td><a href = "{% url "card_delete"  data.id %}">Delete</a></td>
+
+
+                 </tr>
+                 {% endfor %}
+
+             </table>
+                 </center>
+             </div>
+
+
+
+{% endblock %}
